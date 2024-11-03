@@ -10,19 +10,19 @@ on:
       MANIFEST_BRANCH:
         description: 'MANIFEST_BRANCH'
         required: true
-        default: 'twrp-7.1'
+        default: 'twrp-8.1'
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/ycly2333/android_device_EEBBK_H3000S-twrp'
+        default: 'https://github.com/YZBruh/android_device_tcl_A3A_8_4G'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'twrp-7.1'
+        default: 'android-8.1'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
-        default: 'device/EEBBK/H3000S'
+        default: 'device/tcl/A3A_8_4G'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
@@ -32,11 +32,11 @@ on:
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
-        default: 'H3000S'
+        default: 'A3A_8_4G'
       MAKEFILE_NAME:
         description: 'MAKEFILE_NAME'
         required: true
-        default: 'omni_H3000S'
+        default: 'omni_A3A_8_4G'
       BUILD_TARGET:
         description: 'BUILD_TARGET'
         required: true
@@ -128,6 +128,7 @@ jobs:
       run: |
         bash ${GITHUB_WORKSPACE}/scripts/convert.sh ${{ github.event.inputs.DEVICE_PATH }}/${{ steps.buildtree.outputs.value }}.dependencies
         repo sync -j$(nproc --all)
+        git clone -b android-8.1 https://github.com/omnirom/android_frameworks_base_old
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
       continue-on-error: true
 
